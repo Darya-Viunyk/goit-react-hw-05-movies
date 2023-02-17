@@ -10,7 +10,7 @@ export const Item = styled(NavLink)`
   font-size: 24px;
   font-weight: bold;
 
-  &:active {
+  &.active {
     color: red;
   }
 `;
