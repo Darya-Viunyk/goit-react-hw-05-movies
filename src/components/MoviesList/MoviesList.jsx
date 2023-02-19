@@ -1,12 +1,13 @@
 import React from 'react';
 import { MoviesItem } from './MoviesItem';
+import { List } from './moviesList.styled';
 
 export const MoviesList = ({ movies }) => {
   return (
-    <ul>
+    <List>
       {movies.map(movie => {
         return <MoviesItem key={movie.id} title={movie.title} id={movie.id} />;
       })}
-    </ul>
+    </List>
   );
 };

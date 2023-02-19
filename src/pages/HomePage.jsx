@@ -1,5 +1,6 @@
 import { useTrendingApi } from 'service/Movies.api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Header } from './homepage.styled';
 
 export const HomePage = () => {
   const [movies] = useTrendingApi('/trending/movie/day');
@@ -7,7 +8,7 @@ export const HomePage = () => {
   return (
     movies && (
       <>
-        <h1>Trending today</h1>;
+        <Header>Trending today</Header>;
         <MoviesList movies={movies} />
       </>
     )

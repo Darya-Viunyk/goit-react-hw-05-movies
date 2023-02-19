@@ -6,7 +6,7 @@ export const Item = styled(NavLink)`
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-
+  margin-left: 30px;
   font-size: 24px;
   font-weight: bold;
 
@@ -16,6 +16,9 @@ export const Item = styled(NavLink)`
 `;
 export const List = styled.ul`
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
   background: #ffffff;
   padding: 20px;
   margin-top: 0;
