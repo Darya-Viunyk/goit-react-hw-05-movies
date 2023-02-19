@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-// import { useMoviesRender } from 'hooks/useMoviesRender';
 
 const KEY = '5c631b44b992ee7cf944461a6248f299';
 
@@ -13,7 +12,7 @@ const response = axios.create({
   },
 });
 
-export function useTrendingApi() {
+export const useTrendingApi = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
@@ -26,7 +25,8 @@ export function useTrendingApi() {
   }, []);
 
   return [data, loading];
-}
+};
+
 // https://api.themoviedb.org/3/movie/550?api_key=5c631b44b992ee7cf944461a6248f299
 
 export function useSubPages(movieId) {
@@ -78,3 +78,9 @@ export function useGetMovieReviews(movieId) {
 
   return { loading, reviews, done };
 }
+export const fetchSearchedMovie = async searchName => {
+  const responce = await axios.get(
+    `/${`search/movie`}?api_key=${KEY}&query=${searchName}}`
+  );
+  return responce.data;
+};

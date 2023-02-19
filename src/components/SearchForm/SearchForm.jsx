@@ -1,10 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchSearchedMovie } from 'service/Movies.api';
-import { useSearchParams } from 'react-router-dom';
-import { HomeSubPage } from './HomeSubPage';
-
-export const Movies = () => {
+import { Link, Outlet, useSearchParams } from 'react-router-dom';
+export const SearchForm = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const moviesName = searchParams.get('username');
@@ -22,23 +20,18 @@ export const Movies = () => {
     setSearchParams({ moviesname: form.elements.moviesname.value });
     form.reset();
   };
-  const handleInputChange = event => {
-    const newMoviesName = event.currentTarget.value.toLowerCase();
-    setMovies(newMoviesName);
-  };
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="moviesname" onChange={handleInputChange} />
+        <input type="text" name="moviesname" />
         <button type="submit">Search</button>
       </form>
-      <HomeSubPage movies={movies} />
-      {/* <ul>
+      <ul>
         {movies.map(movie => {
           return <Link key={movie.id}>{movie.name}</Link>;
         })}
       </ul>
-      <Outlet /> */}
+      <Outlet />
     </>
   );
 };
