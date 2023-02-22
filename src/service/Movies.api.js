@@ -79,8 +79,8 @@ export function useGetMovieReviews(movieId) {
   return { loading, reviews, done };
 }
 export const fetchSearchedMovie = async searchName => {
-  const responce = await axios.get(
-    `/${`search/movie`}?api_key=${KEY}&query=${searchName}}`
+  const responce = await response.get(
+    `/${`search/movie`}?api_key=${KEY}&query=${searchName}`
   );
-  return responce.data;
+  return responce.data.results;
 };

@@ -1,13 +1,12 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchSearchedMovie } from 'service/Movies.api';
-import { useSearchParams } from 'react-router-dom';
-import { HomeSubPage } from './HomeSubPage';
+import { Link, Outlet, useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const moviesName = searchParams.get('username');
+  const moviesName = searchParams.get('moviesname');
 
   useEffect(() => {
     if (moviesName === '' || moviesName === null) {
@@ -32,13 +31,12 @@ export const Movies = () => {
         <input type="text" name="moviesname" onChange={handleInputChange} />
         <button type="submit">Search</button>
       </form>
-      <HomeSubPage movies={movies} />
-      {/* <ul>
+      <ul>
         {movies.map(movie => {
-          return <Link key={movie.id}>{movie.name}</Link>;
+          return <Link key={movie.id}>{movie.title}</Link>;
         })}
       </ul>
-      <Outlet /> */}
+      <Outlet />
     </>
   );
 };
