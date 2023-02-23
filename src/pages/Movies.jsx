@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchSearchedMovie } from 'service/Movies.api';
-import { Link, Outlet, useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams, Link } from 'react-router-dom';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -12,6 +12,7 @@ export const Movies = () => {
     if (moviesName === '' || moviesName === null) {
       return;
     }
+
     fetchSearchedMovie(moviesName).then(setMovies);
   }, [moviesName]);
 
@@ -21,21 +22,28 @@ export const Movies = () => {
     setSearchParams({ moviesname: form.elements.moviesname.value });
     form.reset();
   };
-  const handleInputChange = event => {
-    const newMoviesName = event.currentTarget.value.toLowerCase();
-    setMovies(newMoviesName);
-  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="moviesname" onChange={handleInputChange} />
+        <input type="text" name="moviesname" />
         <button type="submit">Search</button>
       </form>
       <ul>
         {movies.map(movie => {
-          return <Link key={movie.id}>{movie.title}</Link>;
+          return (
+            <li key={movie.id}>
+              <Link>{movie.title}</Link>
+            </li>
+          );
         })}
       </ul>
+      {/* {movies.map(movie => {
+        return(
+      <div>
+        {movies.length === 0 && <p>Nothing found for your request</p>}
+        {movies.length > 0(<MoviesList movies={movies} />)}
+      </div>)}} */}
       <Outlet />
     </>
   );
