@@ -18,6 +18,7 @@ export const Movies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const form = e.currentTarget;
     setSearchParams({ moviesname: form.elements.moviesname.value });
     form.reset();
@@ -29,21 +30,17 @@ export const Movies = () => {
         <input type="text" name="moviesname" />
         <button type="submit">Search</button>
       </form>
+
       <ul>
         {movies.map(movie => {
           return (
             <li key={movie.id}>
-              <Link>{movie.title}</Link>
+              <Link to={`${movie.id}`}>{movie.title}</Link>
             </li>
           );
         })}
       </ul>
-      {/* {movies.map(movie => {
-        return(
-      <div>
-        {movies.length === 0 && <p>Nothing found for your request</p>}
-        {movies.length > 0(<MoviesList movies={movies} />)}
-      </div>)}} */}
+
       <Outlet />
     </>
   );

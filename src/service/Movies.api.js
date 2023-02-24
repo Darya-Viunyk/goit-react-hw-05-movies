@@ -83,4 +83,5 @@ export const fetchSearchedMovie = async searchName => {
     `/${`search/movie`}?api_key=${KEY}&query=${searchName}`
   );
   return responce.data.results;
+  // products.find((product) => product.id === productId);
 };
