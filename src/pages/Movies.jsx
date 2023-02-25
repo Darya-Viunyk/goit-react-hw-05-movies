@@ -1,47 +1,36 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchSearchedMovie } from 'service/Movies.api';
-import { Outlet, useSearchParams, Link } from 'react-router-dom';
-
+import { Outlet, useSearchParams } from 'react-router-dom';
+import { SearchForm } from 'components/SearchForm/SearchForm';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+// import { useLocation } from 'react-router-dom';
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const moviesName = searchParams.get('moviesname');
+  // const location = useLocation();
 
   useEffect(() => {
     if (moviesName === '' || moviesName === null) {
       return;
     }
+    // if (location.state !== 'HomeSubPage') {
+    //   moviesName.current = movies;
+    //   return movies;
+    // }
 
     fetchSearchedMovie(moviesName).then(setMovies);
   }, [moviesName]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    const form = e.currentTarget;
-    setSearchParams({ moviesname: form.elements.moviesname.value });
-    form.reset();
-  };
-
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="moviesname" />
-        <button type="submit">Search</button>
-      </form>
+    movies && (
+      <>
+        <SearchForm setSearchParams={setSearchParams} />
+        <MoviesList movies={movies} />
 
-      <ul>
-        {movies.map(movie => {
-          return (
-            <li key={movie.id}>
-              <Link to={`${movie.id}`}>{movie.title}</Link>
-            </li>
-          );
-        })}
-      </ul>
-
-      <Outlet />
-    </>
+        <Outlet />
+      </>
+    )
   );
 };
