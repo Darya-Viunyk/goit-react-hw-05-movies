@@ -7,6 +7,7 @@ import { List, HeaderName, AboutName, Cart } from './cast.styled';
 function Cast() {
   const { id } = useParams();
   const { loading, cast, done } = useGetMovieCast(id);
+
   if (!loading && !done) return null;
   if (loading) return <h3>Loading...</h3>;
   return (

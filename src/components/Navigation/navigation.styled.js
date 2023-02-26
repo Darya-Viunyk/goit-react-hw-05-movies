@@ -11,7 +11,7 @@ export const Item = styled(NavLink)`
   font-weight: bold;
 
   &.active {
-    color: red;
+    color: #d0451b;
   }
 `;
 export const List = styled.ul`

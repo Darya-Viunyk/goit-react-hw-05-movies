@@ -1,26 +1,26 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { Box } from './serchforma.styled';
+import { Form } from './serchforma.styled';
+import { Input } from './serchforma.styled';
+import { Button } from './serchforma.styled';
 
 function SearchForm({ setSearchParams }) {
-  // const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
 
     const form = e.currentTarget;
-    // const value = form.elements.search.value.trim().toLowerCase();
-    // if (value === '') return;
-    // if (setSearchParams.success) {
-    //   navigate('/:id', { replace: true });
-    // }
+
     setSearchParams({ moviesname: form.elements.moviesname.value });
     form.reset();
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="moviesname" />
-        <button type="submit">Search</button>
-      </form>
+      <Box>
+        <Form onSubmit={handleSubmit}>
+          <Input type="text" name="moviesname" />
+          <Button type="submit">Search</Button>
+        </Form>
+      </Box>
     </>
   );
 }

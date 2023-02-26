@@ -12,6 +12,6 @@ export const Item = styled(NavLink)`
 
   &:hover,
   :focus {
-    color: red;
+    color: #d0451b;
   }
 `;

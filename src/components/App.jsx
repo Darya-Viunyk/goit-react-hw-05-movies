@@ -1,12 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layuot';
 import { lazy, Suspense } from 'react';
-// import { HomePage } from 'pages/HomePage';
-// import { Movies } from 'pages/Movies';
-// import { HomeSubPage } from 'pages/HomeSubPage';
-// import { Cast } from 'pages/Cast';
-// import { Reviews } from 'pages/Reviews';
-// import { NotFound } from 'pages/NotFound';
+
 const HomePage = lazy(() => import('pages/HomePage'));
 // const Movies = lazy(() => import('pages/Movies')).then(modyle => {
 //   return {
