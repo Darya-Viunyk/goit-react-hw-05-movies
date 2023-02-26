@@ -1,8 +1,8 @@
 import React from 'react';
-import { MoviesItem } from './MoviesItem';
+import MoviesItem from './MoviesItem';
 import { List } from './moviesList.styled';
 
-export const MoviesList = ({ movies }) => {
+function MoviesList({ movies }) {
   return (
     <List>
       {movies.map(movie => {
@@ -10,4 +10,5 @@ export const MoviesList = ({ movies }) => {
       })}
     </List>
   );
-};
+}
+export default MoviesList;

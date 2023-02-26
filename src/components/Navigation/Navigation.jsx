@@ -1,7 +1,7 @@
 import { Item } from './navigation.styled';
 import { List } from './navigation.styled';
 
-export const Navigation = () => {
+function Navigation() {
   return (
     <nav>
       <List>
@@ -14,4 +14,5 @@ export const Navigation = () => {
       </List>
     </nav>
   );
-};
+}
+export default Navigation;

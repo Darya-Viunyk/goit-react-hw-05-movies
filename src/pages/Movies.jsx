@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchSearchedMovie } from 'service/Movies.api';
 import { Outlet, useSearchParams } from 'react-router-dom';
-import { SearchForm } from 'components/SearchForm/SearchForm';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import SearchForm from 'components/SearchForm/SearchForm';
+import MoviesList from 'components/MoviesList/MoviesList';
 // import { useLocation } from 'react-router-dom';
-export const Movies = () => {
+function Movies() {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const moviesName = searchParams.get('moviesname');
@@ -33,4 +33,5 @@ export const Movies = () => {
       </>
     )
   );
-};
+}
+export default Movies;

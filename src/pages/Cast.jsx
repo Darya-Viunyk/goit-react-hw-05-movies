@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import defaultImg from 'img/images.png';
 import { List, HeaderName, AboutName, Cart } from './cast.styled';
 
-export const Cast = () => {
+function Cast() {
   const { id } = useParams();
   const { loading, cast, done } = useGetMovieCast(id);
   if (!loading && !done) return null;
@@ -28,4 +28,5 @@ export const Cast = () => {
       </List>
     </>
   );
-};
+}
+export default Cast;

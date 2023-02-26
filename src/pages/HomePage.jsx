@@ -1,8 +1,8 @@
 import { useTrendingApi } from 'service/Movies.api';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import { Header } from './homepage.styled';
 
-export const HomePage = () => {
+function HomePage() {
   const [movies] = useTrendingApi('/trending/movie/day');
 
   return (
@@ -13,4 +13,5 @@ export const HomePage = () => {
       </>
     )
   );
-};
+}
+export default HomePage;

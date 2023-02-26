@@ -1,11 +1,12 @@
 import { useSubPages } from 'service/Movies.api';
 import React, { useState } from 'react';
+
 import { Button } from './homesubpage.styled';
 import { Box } from './homesubpage.styled';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Page, PageBox, Header, BoxButton } from './homesubpage.styled';
 
-export const HomeSubPage = () => {
+function HomeSubPage() {
   const { id } = useParams();
   const location = useLocation();
   const [fromLocation] = useState(() => location?.state?.from);
@@ -52,4 +53,5 @@ export const HomeSubPage = () => {
       </Box>
     );
   }
-};
+}
+export default HomeSubPage;
