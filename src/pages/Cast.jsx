@@ -10,6 +10,9 @@ function Cast() {
 
   if (!loading && !done) return null;
   if (loading) return <h3>Loading...</h3>;
+
+  if (!loading && done && cast.length === 0)
+    return <h4>We don't have any cast for this movie</h4>;
   return (
     <>
       <List>
